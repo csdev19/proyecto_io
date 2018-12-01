@@ -28,6 +28,7 @@ export class CsInitialInfoComponent implements OnInit {
   idx:number;
   boton_tabla = false;
   ver_tabla = false;
+  valores_z: Array<number> = []
 
   constructor() {
   }
@@ -49,6 +50,7 @@ export class CsInitialInfoComponent implements OnInit {
       this.matriz.push([]);
       this.simbolos_elegidos.push("");
       this.valores_elegidos.push(0);
+      this.valores_z.push(0);
       for (let o = 0; o < (+this.variables_decision); o++) {
         this.matriz[i].push(0);
       }
@@ -63,6 +65,7 @@ export class CsInitialInfoComponent implements OnInit {
     console.log(this.simbolos_elegidos);
     console.log(this.valores_elegidos);
     console.log(this.matriz);
+    console.log(this.valores_z); 
     // this.simbolos_elegidos.push(this.simbolo_elegido);
     this.boton_tabla = !this.boton_tabla;
   }
