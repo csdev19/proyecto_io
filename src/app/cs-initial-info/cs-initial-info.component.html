@@ -1,43 +1,17 @@
 
-<div class="container-info"> </div>
-<mat-form-field> 
-  <mat-select placeholder="Metodo a elegir ">
-    <mat-option value="metodos">Metodo Simplex</mat-option>
-  </mat-select>
-</mat-form-field>
-<mat-form-field> 
-  <input matInput [value]="variables_decision" [(ngModel)]="variables_decision" placeholder="Variables de decision">
-</mat-form-field>
-<mat-form-field> 
-  <input matInput [value]="restricciones" [(ngModel)]="restricciones" placeholder="Restricciones">
-</mat-form-field>
 <button type="button" mat-raised-button color="primary" (click)="clicked()">Insertar</button>
-<h1>Valores de Z</h1>
-<mat-form-field *ngFor="let val of valores_z; let i = index"> 
-  <input matInput [value]="valores_z[i]" [(ngModel)]="valores_z[i]" placeholder="Valores de &gt;">
-</mat-form-field>
-<table>
-  <tr>
-    <div *ngFor="let row of matriz; let i = index">
-      <td *ngFor="let column of row; let idx = index">
-        <mat-form-field> 
-          <input matInput [(ngModel)]="matriz[i][idx]" placeholder="Input" type="number">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field> 
-          <mat-select placeholder="Select" [(value)]="simbolos_elegidos[i]">
-            <mat-option *ngFor="let value of opciones;let idx = index" [value]="value">{{ value }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field> 
-          <input matInput [value]="valores_elegidos[i]" [(ngModel)]="valores_elegidos[i]" placeholder="Valor" type="number">
-        </mat-form-field>
-      </td>
-    </div>
-  </tr>
-</table>
+<div *ngFor="let row of matriz; let i = index">
+  <mat-form-field *ngFor="let column of row; let idx = index"> 
+    <input matInput [(ngModel)]="matriz[i][idx]" placeholder="Input" type="number">
+  </mat-form-field>
+  <mat-form-field> 
+    <mat-select placeholder="Select" [(value)]="simbolos_elegidos[i]">
+      <mat-option *ngFor="let value of opciones;let idx = index" [value]="value">{{ value }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field> 
+    <input matInput [value]="valores_elegidos[i]" [(ngModel)]="valores_elegidos[i]" placeholder="Valor" type="number">
+  </mat-form-field>
+</div>
 <button type="button" mat-raised-button color="primary" (click)="add_row()">Agregar</button>
-<button type="button" *ngIf="boton_tabla" mat-raised-button color="primary" (click)="mostrar_tabla()">Ver Tabla actual</button>
+<button type="button" *ngIf="boton_tabla" mat-raised-button color="primary" (click)="mostrar_tabla()">Ver valores actual</button>

@@ -1,47 +1,42 @@
-.container-info  
+//- .container-info  
 
-mat-form-field 
-    mat-select(placeholder="Metodo a elegir ")
-        mat-option(value="metodos") Metodo Simplex
+//- mat-form-field 
+//-     mat-select(placeholder="Metodo a elegir ")
+//-         mat-option(value="metodos") Metodo Simplex
 
-mat-form-field 
-    input(matInput,[value]="variables_decision",[(ngModel)]="variables_decision",placeholder="Variables de decision")
+//- mat-form-field 
+//-     input(matInput,[value]="variables_decision",[(ngModel)]="variables_decision",placeholder="Variables de decision")
 
-mat-form-field 
-    input(matInput,[value]="restricciones",[(ngModel)]="restricciones",placeholder="Restricciones")
+//- mat-form-field 
+//-     input(matInput,[value]="restricciones",[(ngModel)]="restricciones",placeholder="Restricciones")
 
 button(type="button",mat-raised-button,color="primary",(click)="clicked()") Insertar
 
-h1 Valores de Z
-mat-form-field(*ngFor="let val of valores_z; let i = index") 
-    input(matInput,[value]="valores_z[i]",[(ngModel)]="valores_z[i]",placeholder="Valores de >")
+//- h1 Valores de Z
+//- mat-form-field(*ngFor="let val of valores_z; let i = index") 
+//-     input(matInput,[value]="valores_z[i]",[(ngModel)]="valores_z[i]",placeholder="Valores de >")
 
 
-
-table
-    tr
-        div(*ngFor="let row of matriz; let i = index")
-            td(*ngFor="let column of row; let idx = index")
-                mat-form-field() 
-                    input(matInput,[(ngModel)]="matriz[i][idx]",placeholder="Input",type="number")
-            td()
-                mat-form-field() 
-                    mat-select(placeholder="Select",[(value)]="simbolos_elegidos[i]")
-                        mat-option(*ngFor="let value of opciones;let idx = index",[value]="value") {{ value }}
-            td()
-                mat-form-field 
-                    input(matInput,[value]="valores_elegidos[i]",[(ngModel)]="valores_elegidos[i]",placeholder="Valor",type="number")
+div(*ngFor="let row of matriz; let i = index")
+    mat-form-field(*ngFor="let column of row; let idx = index") 
+        input(matInput,[(ngModel)]="matriz[i][idx]",placeholder="Input",type="number")
+    mat-form-field() 
+        mat-select(placeholder="Select",[(value)]="simbolos_elegidos[i]")
+            mat-option(*ngFor="let value of opciones;let idx = index",[value]="value") {{ value }}
+    mat-form-field 
+        input(matInput,[value]="valores_elegidos[i]",[(ngModel)]="valores_elegidos[i]",placeholder="Valor",type="number")
 
 button(type="button",mat-raised-button,color="primary",(click)="add_row()") Agregar
 
-button(type="button",*ngIf="boton_tabla",mat-raised-button,color="primary",(click)="mostrar_tabla()") Ver Tabla actual
+button(type="button",*ngIf="boton_tabla",mat-raised-button,color="primary",(click)="mostrar_tabla()") Ver valores actual
         
 
 
-//- div(*ngIf="!ver_tabla")
-//-     table.tabla(*ngFor="let row of matriz_2; let i = index",style="width:100%")
+//- div(*ngIf="ver_tabla")
+//-     table.tabla(*ngFor="let row of matriz; let i = index",style="width:100%")
 //-         tr
 //-             td(*ngFor="let column of row; let idx = index")  {{ column }} 
-
+//-             td() {{ simbolos_elegidos[i] }}
+//-             td() {{ valores_elegidos[i] }}
 
 //- app-cs-form-data

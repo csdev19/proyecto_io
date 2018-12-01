@@ -14,8 +14,8 @@ export class CsInitialInfoComponent implements OnInit {
   
 
   msg: string = 'Metodo simplex';
-  variables_decision: number;
-  restricciones: number;
+  variables_decision: number =2;
+  restricciones: number = 3;
   metodos: Array<string>;
   matriz: Array<number[]>;
   funcion: Array<number> = new Array(this.variables_decision);
@@ -27,7 +27,7 @@ export class CsInitialInfoComponent implements OnInit {
   valores_elegidos: Array<number> = []; 
   idx:number;
   boton_tabla = false;
-  ver_tabla = false;
+  ver_tabla = true;
   valores_z: Array<number> = []
 
   constructor() {
