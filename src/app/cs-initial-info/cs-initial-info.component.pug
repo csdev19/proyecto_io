@@ -1,0 +1,42 @@
+
+.container-info  
+
+mat-form-field 
+    mat-select(placeholder="Metodo a elegir ")
+        mat-option(value="metodos") Metodo Simplex
+
+mat-form-field 
+    input(matInput,[value]="variables_decision",[(ngModel)]="variables_decision",placeholder="Variables de decision")
+
+mat-form-field 
+    input(matInput,[value]="restricciones",[(ngModel)]="restricciones",placeholder="Restricciones")
+
+button(type="button",mat-raised-button,color="primary",(click)="clicked()") Insertar
+
+
+
+.example-container  
+div(*ngFor="let row of matriz; let i = index")
+    div()
+        mat-form-field(*ngFor="let column of row; let idx = index") 
+            input(matInput,[value]="matriz[i][idx]",placeholder="Input",type="number")
+        mat-form-field 
+            mat-select(placeholder="Select",[(value)]="simbolos_elegidos[i]")
+                mat-option(*ngFor="let value of opciones;let idx = index",[value]="value") {{ value }}
+                    
+        mat-form-field 
+            input(matInput,[value]="valores_elegidos[i]",[(ngModel)]="valores_elegidos[i]",placeholder="Valor",type="number")
+
+button(type="button",mat-raised-button,color="primary",(click)="add_row()") Agregar
+
+button(type="button",*ngIf="boton_tabla",mat-raised-button,color="primary",(click)="mostrar_tabla()") Ver Tabla actual
+        
+
+
+div(*ngIf="!ver_tabla")
+    table.tabla(*ngFor="let row of matriz; let i = index",style="width:100%")
+        tr
+            td(*ngFor="let column of row; let idx = index")  {{ column }} 
+
+
+//- app-cs-form-data
