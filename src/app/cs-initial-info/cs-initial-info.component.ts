@@ -12,9 +12,10 @@ export class CsInitialInfoComponent implements OnInit {
 
   // arr = ndarray.arange(4*4).reshape(4,4);
   
+  set_zero:number = 0;
 
   msg: string = 'Metodo simplex';
-  variables_decision: number =2;
+  variables_decision: number =3;
   restricciones: number = 3;
   metodos: Array<string>;
   matriz: Array<number[]>;
@@ -29,6 +30,7 @@ export class CsInitialInfoComponent implements OnInit {
   boton_tabla = false;
   ver_tabla = true;
   valores_z: Array<number> = []
+  fila;
 
   constructor() {
   }
@@ -45,6 +47,9 @@ export class CsInitialInfoComponent implements OnInit {
     this.valores_elegidos = []; 
     console.log(this.variables_decision);
     console.log(this.restricciones);
+
+    this.fila = new Array(this.variables_decision);
+    console.log(this.fila);
 
     for (let i = 0; i < this.restricciones; i++) {
       this.matriz.push([]);
